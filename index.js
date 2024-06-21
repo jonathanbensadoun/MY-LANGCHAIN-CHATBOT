@@ -15,17 +15,20 @@ const model = new ChatOpenAI({
   model: "gpt-3.5-turbo",
   apiKey: apiKey
 });
-console.log(apiKey)
+
 
 (async () => {
   try {
     const response = await model.invoke([new HumanMessage({ content: "Hi! I'm Jo" })]);
     console.log(response);
   } catch (error) {
-    if (error.message.includes('429')) {
+    if (error.response && error.response.status === 429) {
       console.error('Erreur : Vous avez dépassé votre quota. Veuillez vérifier votre plan et vos détails de facturation.');
+    } else if (error.response) {
+      console.error(`Erreur lors de l'appel au modèle : ${error.response.status} ${error.response.statusText}`);
     } else {
-      console.error('Erreur lors de l\'appel au modèle :', error);
+      console.error('Erreur lors de l\'appel au modèle :', error.message);
     }
+  
   }
 })();
