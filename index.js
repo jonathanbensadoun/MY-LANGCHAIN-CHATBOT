@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const apiKey = process.env.OPENAI_API_KEY;
+const organization = process.env.OPENAI_ORGANIZATION_ID;
 
 if (!apiKey) {
   console.error('Erreur : OPENAI_API_KEY n\'est pas définie');
@@ -13,9 +14,9 @@ if (!apiKey) {
 
 const model = new ChatOpenAI({
   model: "gpt-3.5-turbo",
-  apiKey: apiKey
+  apiKey: apiKey,
+  organization: organization, // Add the organization parameter
 });
-
 
 (async () => {
   try {
@@ -29,6 +30,5 @@ const model = new ChatOpenAI({
     } else {
       console.error('Erreur lors de l\'appel au modèle :', error.message);
     }
-  
   }
 })();
