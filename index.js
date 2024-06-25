@@ -13,7 +13,7 @@ if (!apiKey) {
 }
 
 const model = new ChatOpenAI({
-  model: "gpt-3.5-turbo",
+  model: "babbage-002",
   apiKey: apiKey,
   organization: organization, // Add the organization parameter
 });
