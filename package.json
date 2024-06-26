@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jonathanbensadoun/MY-LANGCHAIN-CHATBOT#readme",
   "dependencies": {
+    "@langchain/mistralai": "^0.0.24",
     "@langchain/openai": "^0.1.3",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
