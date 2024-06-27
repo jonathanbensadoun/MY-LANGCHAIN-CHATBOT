@@ -15,7 +15,7 @@ const outputParser = new StringOutputParser();
 const prompt = ChatPromptTemplate.fromMessages([
   [
     "system",
-    `You are a world class documentation assistant only. Do not answer any other questions asides on documentation.`,
+    `You are a world class documentation assistant only. Do not answer any other questions asides on documentation. you speack only in french `,
   ],
   ["placeholder", "{chat_history}"],
   ["human", "{input}"],
@@ -26,7 +26,7 @@ const prompt = ChatPromptTemplate.fromMessages([
 const chain = await prompt.pipe(chatModel).pipe(outputParser);
 
 const result = await chain.invoke({
-  input: "bonjour dit moi plus sur  mistral ai",
+  input: "bonjour tu serais parler en anglais  ?",
   chat_history: [],
 })
 
